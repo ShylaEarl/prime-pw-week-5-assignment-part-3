@@ -59,4 +59,27 @@ function showCollection(array){
   // return `${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`;
 }//end showCollection function
 
+//testing showCollection function which returns undefined b/c we aren't returning anything from the function
 console.log('Testing showCollection function', showCollection(collection));
+
+//created a findByArtist function that accepts a string parameter
+function findByArtist(artist){
+  //created an empty array
+  let artistArray = [];
+  //looing through collection array
+  for(let i = 0; i < collection.length; i++){
+    //if argument matches an artist name in the collection
+    if(artist === collection[i].artist){
+      //add the matched album to an empty artist array
+      artistArray.push(collection[i]);
+    }//end conditioanl
+  }//end for loop
+  //returns an array of albums by the same artist
+  return artistArray;
+}//end findByArtist function
+
+console.log('I have these Cyndi Lauper albums:', findByArtist('Cyndi Lauper'));
+console.log('I have these Prince albums:', findByArtist('Prince'));
+console.log('I created these albums:', findByArtist('Shyla'));
+console.log('This is testing if no argument is added', findByArtist());
+console.log('I have these Soft Kill albums:', findByArtist('Soft Kill'));
