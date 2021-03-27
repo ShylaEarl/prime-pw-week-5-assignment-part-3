@@ -146,24 +146,7 @@ console.log('I have these Soft Kill albums:', findByArtist('Soft Kill'));
 
 //****closest one to the directions yet!****
 // //created search function to search for matching object criteria
-// function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
-//   //empty array to hold search results
-//   let searchResults = [];
-//   //looping through collection array
-//   for(let i = 0; i < collection.length; i++){
-//     //searching for matches to search criteria
-//     if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
-//       //adding matching albums to searchResults array
-//       searchResults.push(collection[i]);
-//       // return searchResults;
-//     }//end conditional
-//   }//end for loop
-//   return searchResults;
-//   // return collection;
-// }//end search function
-
-//created search function to search for matching object criteria
-function search({criteria1, criteria2}){ // (object)? or ({object})?
+function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
   //empty array to hold search results
   let searchResults = [];
   //looping through collection array
@@ -171,12 +154,12 @@ function search({criteria1, criteria2}){ // (object)? or ({object})?
     //searching for matches to search criteria
     if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
       //adding matching albums to searchResults array
-      searchResults.push(collection[i]); //collection[i]
-      // return searchResults;
+      searchResults.push(collection[i]);
+    } else if (criteria1 === undefined && criteria2 === undefined){
+      return collection;
     }//end conditional
   }//end for loop
   return searchResults;
-  // return collection;
 }//end search function
 
 console.log('****Testing Search Function.****');
@@ -186,10 +169,15 @@ console.log('Testing search. Should return 1 album.', search({artist: 'Soft Kill
 console.log('Testing search. Should return 1 album.', search({artist: 'Soft Kill', yearPublished: 2018}));
 console.log('Testing search. Should return 1 album.', search({artist: 'The Rope', yearPublished: 2011}));
 console.log('My B V test. Should return 2 albums.', search({artist: 'My Bloody Valentine', yearPublished: 1991}));
+console.log('Test. Should return empty array.', search({artist: 'Shyla', yearPublished: 2020}));
+console.log('Test. Should return empty array.', search({artist: 'ACTORS', yearPublished: 2018}));
+console.log('Test. Should return empty array.', search({artist: 'Prince', yearPublished: 1991}));
 console.log('Testing search. Should log all albums', search({})); //should log all albums in collection
-console.log('Testing search. Should log all albums.', search()); //should log all albums in collection
+// console.log('Testing search. Should log all albums.', search()); //should log all albums in collection
+console.log('Testing search', search({title: 'Girls Just Want to have Fun', artist: 'Cyndi Lauper', year: 1984}));
+console.log('Testing search', search({title: 'Purple Rain', artist: 'Prince', year: 1984}));
 
-//********************************************
+console.log('**************************************************');
 console.log('Testing search. Artist Prince. Should return 2 albums.', search({artist: 'Prince'})); //should log all albums by Prince
 console.log('Testing search. Pub year 1984. Should return 2 albums.', search({yearPublished: 1984})); //should log all albums from 1984
 
@@ -207,10 +195,9 @@ console.log('Testing search. Pub year 1984. Should return 2 albums.', search({ye
 console.log(search(1984));
 console.log(search('My Bloody Valentine', 1991));
 console.log(search('My Bloody Valentine', 1995));
+console.log(search());
 
 //****************************
-// console.log('Testing search', search({title: 'Girls Just Want to have Fun', artist: 'Cyndi Lauper', year: 1984}));
-// console.log('Testing search', search({title: 'Purple Rain', artist: 'Prince', year: 1984}));
 
 
 //*******************************************
@@ -244,4 +231,23 @@ console.log(search('My Bloody Valentine', 1995));
 //   }//end for loop
 //   return searchResults;
 //   //return collection;
+// }//end search function
+
+// //created search function to search for matching object criteria
+// function search({criteria1, criteria2}){ // (object)? or ({object})?
+//   //empty array to hold search results
+//   let searchResults = [];
+//   //looping through collection array
+//   for(let i = 0; i < collection.length; i++){
+//     //searching for matches to search criteria
+//     if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
+//       //adding matching albums to searchResults array
+//       searchResults.push(collection[i]); //collection[i]
+//       // return searchResults;
+//     } else if (criteria1 === undefined && criteria2 === undefined){
+//
+//     }//end conditional
+//   }//end for loop
+//   return searchResults;
+//   // return collection;
 // }//end search function
