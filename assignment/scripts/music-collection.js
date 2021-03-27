@@ -6,13 +6,13 @@ let collection = [];
 let album = {};
 
 //created addToCollection function which takes in 3 parameters
-function addToCollection(title, artist, yearPublished){ // tracks or {name: name, duration: duration} as tracks parameter?
+function addToCollection(title, artist, yearPublished, {name: name, duration: duration}){ // tracks or {name: name, duration: duration} as tracks parameter?
   //creates a new object
     album = {
     title: title,
     artist: artist,
     yearPublished: yearPublished,
-    // tracks: [{name: name, duration: duration}] //do I need to hard code tracks here or can I add it below?
+    tracks: [{name: name, duration: duration}] //do I need to hard code tracks here or can I add it below?
   };
   //adds new object to collection array
   collection.push(album);
