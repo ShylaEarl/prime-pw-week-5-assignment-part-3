@@ -87,65 +87,6 @@ console.log('I have these Soft Kill albums:', findByArtist('Soft Kill'));
 //***STRETCH GOALS***
 
 // //created search function to search for matching object criteria
-// function search(object){ //({object})?
-//   //empty array to hold search results
-//   let searchResults = [];
-//   //looping through collection array
-//   for(let i = 0; i < collection.length; i++){
-//     //searching for matches to search criteria
-//     if(object === collection[i].title || object === collection[i].artist || object === collection[i].yearPublished){
-//       //adding matching albums to searchResults array
-//       searchResults.push(collection[i]); //collection[i]
-//     }//end conditional
-//   }//end for loop
-//   return searchResults;
-//   // return collection;
-// }//end search function
-
-//try .filter method?? ex. object === collection[i].filter()
-//*****************************************************************
-// //created search function to search for matching object criteria
-// function search({title: criteria1, artist: criteria2, yearPublished: criteria3}){ // (object)? or ({object})?
-//   //empty array to hold search results
-//   let searchResults = [];
-//   //looping through collection array
-//   for(let i = 0; i < collection.length; i++){
-//     //searching for matches to search criteria
-//     if(criteria1 === collection[i].title || criteria1 === collection[i].artist || criteria1 === collection[i].yearPublished){
-//       //adding matching albums to searchResults array
-//       searchResults.push(collection[i]); //collection[i]
-//     } else if (criteria2 === collection[i].title || criteria2 === collection[i].artist || criteria2 === collection[i].yearPublished){
-//       searchResults.push(collection[i]);
-//     } else if (criteria3 === collection[i].title || criteria3 === collection[i].artist || criteria3 === collection[i].yearPublished){
-//       searchResults.push(collection[i]);
-//     }//end conditional
-//   }//end for loop
-//   return searchResults;
-//   // return collection;
-// }//end search function
-
-// //created search function to search for matching object criteria
-// function search({title: criteria1, artist: criteria2, yearPublished: criteria3}){ // (object)? or ({object})?
-//   //empty array to hold search results
-//   let searchResults = [];
-//   //looping through collection array
-//   for(let i = 0; i < collection.length; i++){
-//     //searching for matches to search criteria
-//     if(criteria1 === collection[i].title){
-//       //adding matching albums to searchResults array
-//       searchResults.push(collection[i]); //collection[i]
-//     } else if (criteria2 === collection[i].artist ){
-//       searchResults.push(collection[i]);
-//     } else if (criteria3 === collection[i].yearPublished){
-//       searchResults.push(collection[i]);
-//     }//end conditional
-//   }//end for loop
-//   return searchResults;
-//   // return collection;
-// }//end search function
-
-//****closest one to the directions yet!****
-// //created search function to search for matching object criteria
 function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
   //empty array to hold search results
   let searchResults = [];
@@ -155,10 +96,12 @@ function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or 
     if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
       //adding matching albums to searchResults array
       searchResults.push(collection[i]);
-    } else if (criteria1 === undefined && criteria2 === undefined){
+    } else if (criteria1 === undefined && criteria2 === undefined){ //if an empty object is passed as an argument (undefined)
+      //return collection array
       return collection;
     }//end conditional
   }//end for loop
+  //if there is are search arguments return matching results or an empty array if no matches
   return searchResults;
 }//end search function
 
@@ -169,85 +112,56 @@ console.log('Testing search. Should return 1 album.', search({artist: 'Soft Kill
 console.log('Testing search. Should return 1 album.', search({artist: 'Soft Kill', yearPublished: 2018}));
 console.log('Testing search. Should return 1 album.', search({artist: 'The Rope', yearPublished: 2011}));
 console.log('My B V test. Should return 2 albums.', search({artist: 'My Bloody Valentine', yearPublished: 1991}));
-console.log('Test. Should return empty array.', search({artist: 'Shyla', yearPublished: 2020}));
+console.log('Test. Should return empty array.', search({artist: 'Shyla', yearPublished: 2016}));
 console.log('Test. Should return empty array.', search({artist: 'ACTORS', yearPublished: 2018}));
 console.log('Test. Should return empty array.', search({artist: 'Prince', yearPublished: 1991}));
 console.log('Testing search. Should log all albums', search({})); //should log all albums in collection
-// console.log('Testing search. Should log all albums.', search()); //should log all albums in collection
-console.log('Testing search', search({title: 'Girls Just Want to have Fun', artist: 'Cyndi Lauper', year: 1984}));
-console.log('Testing search', search({title: 'Purple Rain', artist: 'Prince', year: 1984}));
+// // console.log('Testing search. Should log all albums.', search()); //should log all albums in collection
 
 console.log('**************************************************');
-console.log('Testing search. Artist Prince. Should return 2 albums.', search({artist: 'Prince'})); //should log all albums by Prince
-console.log('Testing search. Pub year 1984. Should return 2 albums.', search({yearPublished: 1984})); //should log all albums from 1984
 
-//****************************************
-// function search(criteria1, criteria2){
-//   let searchResults = [];
-//   for(let i = 0; i < collection.length; i++){
-//     if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
-//       searchResults.push(collection[i]);
-//     }//end conditional
-//   }//end loop
-//   return searchResults;
-// }//end function
-//
-console.log(search(1984));
-console.log(search('My Bloody Valentine', 1991));
-console.log(search('My Bloody Valentine', 1995));
-console.log(search());
+function search2({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
+  //empty array to hold search results
+  let searchResults = [];
+  //looping through collection array
+  for(let i = 0; i < collection.length; i++){
+    //searching for matches to search criteria
+    if(criteria1 === collection[i].artist || criteria2 === collection[i].yearPublished){
+      //adding matching albums to searchResults array
+      searchResults.push(collection[i]);
+    } else if (criteria1 === undefined && criteria2 === undefined){ //if an empty object is passed as an argument (undefined)
+      //return collection array
+      return collection;
+    }//end conditional
+  }//end for loop
+  //if there is are search arguments return matching results or an empty array if no matches
+  return searchResults;
+}//end search function
+
+console.log('Testing search2. Artist Prince. Should return 2 albums.', search2({artist: 'Prince'})); //should log all albums by Prince
+console.log('Testing search2. Pub year 1984. Should return 2 albums.', search2({yearPublished: 1984})); //should log all albums from 1984
+console.log('Testing search2. Should log all albums', search2({})); //should log 10 albums
+
+console.log('****************************************');
+
+function search3(criteria1, criteria2){
+  let searchResults = [];
+  for(let i = 0; i < collection.length; i++){
+    if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
+      searchResults.push(collection[i]);
+    } else if (criteria1 === undefined && criteria2 === undefined){
+      return collection;
+    }//end conditional
+  }//end loop
+  return searchResults;
+}//end function
+
+console.log(search3(1984));
+console.log(search3('My Bloody Valentine', 1991));
+console.log(search3('My Bloody Valentine', 1995));
+console.log(search3());
 
 //****************************
 
-
-//*******************************************
-// //created search function to search for matching object criteria
-// function search({album}){
-//   //empty array to hold search results
-//   let searchResults = [];
-//   for(let i = 0; i < collection.length; i++){
-//     if(album === collection.artist && album === collection.title && album === collection.yearPublished){
-//       searchResults.push({album});
-//       return searchResults;
-//     } else {
-//       return collection;
-//     }//end conditional
-//   }//end for loop
-// }//end search function
-
-// //try .filter method?? ex. object === collection[i].filter()
-//
-// //created search function to search for matching object criteria
-// function search(object){
-//   //empty array to hold search results
-//   let searchResults = [];
-//   //looping through collection array
-//   for(let i = 0; i < collection.length; i++){
-//     //searching for matches to search criteria
-//     if(object.title === collection[i].title && object.artist === collection[i].artist && object.year === collection[i].yearPublished){
-//       //adding matching albums to searchResults array
-//       searchResults.push(object); //collection[i]
-//     }//end conditional
-//   }//end for loop
-//   return searchResults;
-//   //return collection;
-// }//end search function
-
-// //created search function to search for matching object criteria
-// function search({criteria1, criteria2}){ // (object)? or ({object})?
-//   //empty array to hold search results
-//   let searchResults = [];
-//   //looping through collection array
-//   for(let i = 0; i < collection.length; i++){
-//     //searching for matches to search criteria
-//     if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
-//       //adding matching albums to searchResults array
-//       searchResults.push(collection[i]); //collection[i]
-//       // return searchResults;
-//     } else if (criteria1 === undefined && criteria2 === undefined){
-//
-//     }//end conditional
-//   }//end for loop
-//   return searchResults;
-//   // return collection;
-// }//end search function
+// console.log('Testing search', search({title: 'Girls Just Want to have Fun', artist: 'Cyndi Lauper', year: 1984}));
+// console.log('Testing search', search({title: 'Purple Rain', artist: 'Prince', year: 1984}));
