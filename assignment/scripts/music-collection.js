@@ -6,12 +6,13 @@ let collection = [];
 let album = {};
 
 //created addToCollection function which takes in 3 parameters
-function addToCollection(title, artist, yearPublished){
+function addToCollection(title, artist, yearPublished){ // tracks or {name: name, duration: duration} as tracks parameter?
   //creates a new object
     album = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished
+    yearPublished: yearPublished,
+    // tracks: [{name: name, duration: duration}] //do I need to hard code tracks here or can I add it below?
   };
   //adds new object to collection array
   collection.push(album);
@@ -19,8 +20,14 @@ function addToCollection(title, artist, yearPublished){
   return album;
 }//end addToCollection function
 
+//attempting to add the property value tracks which is an array of objects to the object album above without hard coding
+// album.tracks = [{
+//   name: name,
+//   duration: duration
+// }];
+
 //testing addToCollection function by calling it and then logging the newly added object
-console.log(addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984));
+console.log(addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984, {name: 'Time after Time', duration: 3.27}));
 console.log('I have added ', album, ' to my record collection!');
 // console.log('I have just added ', Object.values(album), ' to my record collection!');
 // console.log(`I've add ${addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984)} to my record collection!`);
@@ -29,7 +36,7 @@ console.log(addToCollection('Purple Rain', 'Prince', 1984));
 console.log('I have added ', album, ' to my record collection!');
 console.log(addToCollection('1999', 'Prince', 1982));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Lilian', 'The Rope', 2019));
+console.log(addToCollection('Lilian', 'The Rope', 2019, {name: 'Gravity', duration: 2.36}, {name: 'Water to Wine', duration: 5.49}));
 console.log('I have added ', album, ' to my record collection!');
 console.log(addToCollection('The Rope', 'The Rope', 2011));
 console.log('I have added ', album, ' to my record collection!');
@@ -55,6 +62,9 @@ function showCollection(array){
   for(let i = 0; i < array.length; i++){
     //logging each album's info in specified format
     console.log('They are:', `${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`);
+    //this log includes the tracks property
+    // console.log('They are:', `${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}: 1. ${array[i].tracks.name}: ${array[i].tracks.duration}
+    // 2. ${array[i].tracks.name}: ${array[i].tracks.duration} 3. ${array[i].tracks.name}: ${array[i].tracks.duration}`);
   }//end for loop
   // return `${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`;
 }//end showCollection function
@@ -87,13 +97,13 @@ console.log('I have these Soft Kill albums:', findByArtist('Soft Kill'));
 //***STRETCH GOALS***
 
 // //created search function to search for matching object criteria
-function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
+function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})? tracks: {name: criteria3?} or tracks.name: criteria3? or trackName: {name: criteria3}
   //empty array to hold search results
   let searchResults = [];
   //looping through collection array
   for(let i = 0; i < collection.length; i++){
     //searching for matches to search criteria
-    if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
+    if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){ //&& criteria3 ===collection[i].tracks.name
       //adding matching albums to searchResults array
       searchResults.push(collection[i]);
     } else if (criteria1 === undefined && criteria2 === undefined){ //if an empty object is passed as an argument (undefined)
@@ -101,7 +111,7 @@ function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or 
       return collection;
     }//end conditional
   }//end for loop
-  //if there is are search arguments return matching results or an empty array if no matches
+  //if there are search arguments return matching results or an empty array if no matches
   return searchResults;
 }//end search function
 
@@ -111,13 +121,19 @@ console.log('Testing search. Artist (Prince) & Year (1984). Should return 1 albu
 console.log('Testing search. Should return 1 album.', search({artist: 'Soft Kill', yearPublished: 2011}));
 console.log('Testing search. Should return 1 album.', search({artist: 'Soft Kill', yearPublished: 2018}));
 console.log('Testing search. Should return 1 album.', search({artist: 'The Rope', yearPublished: 2011}));
-console.log('My B V test. Should return 2 albums.', search({artist: 'My Bloody Valentine', yearPublished: 1991}));
+console.log('MBV test. Should return 2 albums.', search({artist: 'My Bloody Valentine', yearPublished: 1991}));
 console.log('Test. Should return empty array.', search({artist: 'Shyla', yearPublished: 2016}));
 console.log('Test. Should return empty array.', search({artist: 'ACTORS', yearPublished: 2018}));
 console.log('Test. Should return empty array.', search({artist: 'Prince', yearPublished: 1991}));
 console.log('Testing search. Should log all albums', search({})); //should log all albums in collection
 // // console.log('Testing search. Should log all albums.', search()); //should log all albums in collection
 
+// album.tracks = [{
+//   name: name,
+//   duration: duration
+// }];
+
+//Below are two ways to write the search function slightly different.
 console.log('**************************************************');
 
 function search2({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
@@ -160,8 +176,3 @@ console.log(search3(1984));
 console.log(search3('My Bloody Valentine', 1991));
 console.log(search3('My Bloody Valentine', 1995));
 console.log(search3());
-
-//****************************
-
-// console.log('Testing search', search({title: 'Girls Just Want to have Fun', artist: 'Cyndi Lauper', year: 1984}));
-// console.log('Testing search', search({title: 'Purple Rain', artist: 'Prince', year: 1984}));
