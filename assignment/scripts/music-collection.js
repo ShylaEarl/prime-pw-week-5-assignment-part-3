@@ -5,15 +5,26 @@ let collection = [];
 //globally scoped album variable that can be accessed outside of the function
 let album = {};
 
+// let song = album.tracks;
+// let song = {name: name, duration: duration};
+
 //created addToCollection function which takes in 3 parameters
-function addToCollection(title, artist, yearPublished, {name: name, duration: duration}){ // tracks or {name: name, duration: duration} as tracks parameter?
+function addToCollection(title, artist, yearPublished, ...[{name: name, duration: duration}]){ // tracks or {name: name, duration: duration} as tracks parameter?
   //creates a new object
     album = {
     title: title,
     artist: artist,
     yearPublished: yearPublished,
-    tracks: [{name: name, duration: duration}] //do I need to hard code tracks here or can I add it below?
+    tracks: [{name: name,
+            duration: duration}] //do I need to hard code tracks here or can I add it below?
   };
+  // album.tracks.push({name: name, duration: duration});
+  // for(let i = 0; i < album.tracks.length; i++){
+  //   album.tracks.push({name: name, duration: duration});
+  // }
+  // for (let song of album.tracks){
+  //   album.tracks.push(song);
+  // }
   //adds new object to collection array
   collection.push(album);
   //and returns the object when called.
@@ -25,30 +36,32 @@ function addToCollection(title, artist, yearPublished, {name: name, duration: du
 //   name: name,
 //   duration: duration
 // }];
+//
+// let song = album.tracks;
 
 //testing addToCollection function by calling it and then logging the newly added object
-console.log(addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984, {name: 'Time after Time', duration: 3.27}));
+console.log(addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984, {name: 'Time after Time', duration: 3.27}, {name: 'True Colors', duration: 4.56}, {name: 'She Bop', duration: 5.10}));
 console.log('I have added ', album, ' to my record collection!');
 // console.log('I have just added ', Object.values(album), ' to my record collection!');
 // console.log(`I've add ${addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984)} to my record collection!`);
 // console.log(`I've added ${album} to my record collection!`);
-console.log(addToCollection('Purple Rain', 'Prince', 1984));
+console.log(addToCollection('Purple Rain', 'Prince', 1984, [{name: 'When Doves Cry', duration: 4.43}, {name: 'Darling Nikki', duration: 6.54}]));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('1999', 'Prince', 1982));
+console.log(addToCollection('1999', 'Prince', 1982, {name: '1999', duration: 4.43}, {name: 'Little Red Corvette', duration: 5.03}, {name: 'Delirious', duration: 4.01}));
 console.log('I have added ', album, ' to my record collection!');
 console.log(addToCollection('Lilian', 'The Rope', 2019, {name: 'Gravity', duration: 2.36}, {name: 'Water to Wine', duration: 5.49}));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('The Rope', 'The Rope', 2011));
+console.log(addToCollection('The Rope', 'The Rope', 2011, {name: 'Time after Time', duration: 3.27}));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Lemonade', 'Beyonce', 2016));
+console.log(addToCollection('Lemonade', 'Beyonce', 2016, {name: 'Time after Time', duration: 3.27}));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Loveless', 'My Bloody Valentine', 1991));
+console.log(addToCollection('Loveless', 'My Bloody Valentine', 1991, {name: 'Time after Time', duration: 3.27}));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Tremolo', 'My Bloody Valentine', 1991));
+console.log(addToCollection('Tremolo', 'My Bloody Valentine', 1991, {name: 'Time after Time', duration: 3.27}));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('An Open Door', 'Soft Kill', 2011));
+console.log(addToCollection('An Open Door', 'Soft Kill', 2011, {name: 'Time after Time', duration: 3.27}));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Savior', 'Soft Kill', 2018));
+console.log(addToCollection('Savior', 'Soft Kill', 2018, {name: 'Time after Time', duration: 3.27}));
 console.log('I have added ', album, ' to my record collection!');
 
 //testing collection array to make sure all album objects have been added to the collection array
