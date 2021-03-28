@@ -5,42 +5,23 @@ let collection = [];
 //globally scoped album variable that can be accessed outside of the function
 let album = {};
 
-// let song = album.tracks;
-// let song = {name: name, duration: duration};
-
 //created addToCollection function which takes in 3 parameters
-function addToCollection(title, artist, yearPublished, ...[{name: name, duration: duration}]){ // tracks or {name: name, duration: duration} as tracks parameter?
+function addToCollection(title, artist, yearPublished, ...[{name: name, duration: duration}]){ // {name: name, duration: duration} as tracks parameter?
   //creates a new object
     album = {
     title: title,
     artist: artist,
     yearPublished: yearPublished,
-    tracks: [{name: name,
-            duration: duration}] //do I need to hard code tracks here or can I add it below?
+    tracks: [{name: name, duration: duration}]
   };
-  // album.tracks.push({name: name, duration: duration});
-  // for(let i = 0; i < album.tracks.length; i++){
-  //   album.tracks.push({name: name, duration: duration});
-  // }
-  // for (let song of album.tracks){
-  //   album.tracks.push(song);
-  // }
   //adds new object to collection array
   collection.push(album);
   //and returns the object when called.
   return album;
 }//end addToCollection function
 
-//attempting to add the property value tracks which is an array of objects to the object album above without hard coding
-// album.tracks = [{
-//   name: name,
-//   duration: duration
-// }];
-//
-// let song = album.tracks;
-
 //testing addToCollection function by calling it and then logging the newly added object
-console.log(addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984, {name: 'Time after Time', duration: 3.27}, {name: 'True Colors', duration: 4.56}, {name: 'She Bop', duration: 5.10}));
+console.log(addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984, ...[{name: 'Time after Time', duration: 3.27}, {name: 'True Colors', duration: 4.56}, {name: 'She Bop', duration: 5.10}]));
 console.log('I have added ', album, ' to my record collection!');
 // console.log('I have just added ', Object.values(album), ' to my record collection!');
 // console.log(`I've add ${addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984)} to my record collection!`);
