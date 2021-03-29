@@ -6,13 +6,12 @@ let collection = [];
 let album = {};
 
 //created addToCollection function which takes in 3 parameters
-function addToCollection(title, artist, yearPublished, ...[{name: name, duration: duration}]){ // {name: name, duration: duration} as tracks parameter?
+function addToCollection(title, artist, yearPublished){
   //creates a new object
     album = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished,
-    tracks: [{name: name, duration: duration}]
+    yearPublished: yearPublished
   };
   //adds new object to collection array
   collection.push(album);
@@ -21,28 +20,28 @@ function addToCollection(title, artist, yearPublished, ...[{name: name, duration
 }//end addToCollection function
 
 //testing addToCollection function by calling it and then logging the newly added object
-console.log(addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984, ...[{name: 'Time after Time', duration: 3.27}, {name: 'True Colors', duration: 4.56}, {name: 'She Bop', duration: 5.10}]));
+console.log(addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984));
 console.log('I have added ', album, ' to my record collection!');
 // console.log('I have just added ', Object.values(album), ' to my record collection!');
 // console.log(`I've add ${addToCollection('Girls Just Want to have Fun', 'Cyndi Lauper', 1984)} to my record collection!`);
 // console.log(`I've added ${album} to my record collection!`);
-console.log(addToCollection('Purple Rain', 'Prince', 1984, [{name: 'When Doves Cry', duration: 4.43}, {name: 'Darling Nikki', duration: 6.54}]));
+console.log(addToCollection('Purple Rain', 'Prince', 1984));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('1999', 'Prince', 1982, {name: '1999', duration: 4.43}, {name: 'Little Red Corvette', duration: 5.03}, {name: 'Delirious', duration: 4.01}));
+console.log(addToCollection('1999', 'Prince', 1982));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Lilian', 'The Rope', 2019, {name: 'Gravity', duration: 2.36}, {name: 'Water to Wine', duration: 5.49}));
+console.log(addToCollection('Lilian', 'The Rope', 2019));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('The Rope', 'The Rope', 2011, {name: 'Time after Time', duration: 3.27}));
+console.log(addToCollection('The Rope', 'The Rope', 2011));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Lemonade', 'Beyonce', 2016, {name: 'Time after Time', duration: 3.27}));
+console.log(addToCollection('Lemonade', 'Beyonce', 2016));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Loveless', 'My Bloody Valentine', 1991, {name: 'Time after Time', duration: 3.27}));
+console.log(addToCollection('Loveless', 'My Bloody Valentine', 1991));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Tremolo', 'My Bloody Valentine', 1991, {name: 'Time after Time', duration: 3.27}));
+console.log(addToCollection('Tremolo', 'My Bloody Valentine', 1991));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('An Open Door', 'Soft Kill', 2011, {name: 'Time after Time', duration: 3.27}));
+console.log(addToCollection('An Open Door', 'Soft Kill', 2011));
 console.log('I have added ', album, ' to my record collection!');
-console.log(addToCollection('Savior', 'Soft Kill', 2018, {name: 'Time after Time', duration: 3.27}));
+console.log(addToCollection('Savior', 'Soft Kill', 2018));
 console.log('I have added ', album, ' to my record collection!');
 
 //testing collection array to make sure all album objects have been added to the collection array
@@ -56,9 +55,6 @@ function showCollection(array){
   for(let i = 0; i < array.length; i++){
     //logging each album's info in specified format
     console.log('They are:', `${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`);
-    //this log includes the tracks property
-    // console.log('They are:', `${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}: 1. ${array[i].tracks.name}: ${array[i].tracks.duration}
-    // 2. ${array[i].tracks.name}: ${array[i].tracks.duration} 3. ${array[i].tracks.name}: ${array[i].tracks.duration}`);
   }//end for loop
   // return `${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`;
 }//end showCollection function
@@ -91,13 +87,13 @@ console.log('I have these Soft Kill albums:', findByArtist('Soft Kill'));
 //***STRETCH GOALS***
 
 // //created search function to search for matching object criteria
-function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})? tracks: {name: criteria3?} or tracks.name: criteria3? or trackName: {name: criteria3}
+function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
   //empty array to hold search results
   let searchResults = [];
   //looping through collection array
   for(let i = 0; i < collection.length; i++){
     //searching for matches to search criteria
-    if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){ //&& criteria3 ===collection[i].tracks.name
+    if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
       //adding matching albums to searchResults array
       searchResults.push(collection[i]);
     } else if (criteria1 === undefined && criteria2 === undefined){ //if an empty object is passed as an argument (undefined)
@@ -130,7 +126,7 @@ console.log('Testing search. Should log all albums', search({})); //should log a
 //Below are two ways to write the search function slightly different.
 console.log('**************************************************');
 
-function search2({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
+function search2({artist: criteria1, yearPublished: criteria2}){ 
   //empty array to hold search results
   let searchResults = [];
   //looping through collection array
