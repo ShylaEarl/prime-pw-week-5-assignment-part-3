@@ -3,7 +3,7 @@ console.log('***** Music Collection *****')
 //created variable collection with a value of an empty array
 let collection = [];
 //globally scoped album variable that can be accessed outside of the function
-let album = {};
+//let album = {};
 
 //created addToCollection function which takes in 3 parameters
 function addToCollection(title, artist, yearPublished){
@@ -87,16 +87,17 @@ console.log('I have these Soft Kill albums:', findByArtist('Soft Kill'));
 //***STRETCH GOALS***
 
 // //created search function to search for matching object criteria
-function search({artist: criteria1, yearPublished: criteria2}){ // (object)? or ({object})?
+function search(criteria){ // {artist: criteria1, yearPublished: criteria2} or (object)? or ({object})?
+  console.log('criteria is', criteria);
   //empty array to hold search results
   let searchResults = [];
   //looping through collection array
   for(let i = 0; i < collection.length; i++){
     //searching for matches to search criteria
-    if(criteria1 === collection[i].artist && criteria2 === collection[i].yearPublished){
+    if(criteria.artist === collection[i].artist && criteria.yearPublished === collection[i].yearPublished){
       //adding matching albums to searchResults array
       searchResults.push(collection[i]);
-    } else if (criteria1 === undefined && criteria2 === undefined){ //if an empty object is passed as an argument (undefined)
+    } else if (criteria.artist === undefined && criteria.yearPublished === undefined){ //if an empty object is passed as an argument (undefined)
       //return collection array
       return collection;
     }//end conditional
@@ -126,7 +127,7 @@ console.log('Testing search. Should log all albums', search({})); //should log a
 //Below are two ways to write the search function slightly different.
 console.log('**************************************************');
 
-function search2({artist: criteria1, yearPublished: criteria2}){ 
+function search2({artist: criteria1, yearPublished: criteria2}){
   //empty array to hold search results
   let searchResults = [];
   //looping through collection array
