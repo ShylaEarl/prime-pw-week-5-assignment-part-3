@@ -6,12 +6,13 @@ let collection = [];
 //let album = {};
 
 //created addToCollection function which takes in 3 parameters
-function addToCollection(title, artist, yearPublished){
+function addToCollection(title, artist, yearPublished){ //tracks
   //creates a new object
     album = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished
+    yearPublished: yearPublished,
+    //tracks: [{name: name, duration: duration}]
   };
   //adds new object to collection array
   collection.push(album);
@@ -167,3 +168,5 @@ console.log(search3(1984));
 console.log(search3('My Bloody Valentine', 1991));
 console.log(search3('My Bloody Valentine', 1995));
 console.log(search3());
+
+console.log('************************************');

@@ -1,0 +1,27 @@
+body{
+  background-color: turquoise;
+  background-image: url("record.png");
+  margin: 0px;
+}
+
+header {
+  background-color: black;
+  color: lightgray;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+main {
+  background-color: lightgray;
+  padding-bottom: 10px;
+  /*padding: 1em; /*I prefer the layout without the padding here*/
+}
+
+footer{
+  background-color: lightgray;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
